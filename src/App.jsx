@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Main } from "./Components/Main"
+import { useState } from "react"
+import { Modal } from "./Components/Modal"
+import {bd} from "../bd"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [Banco, setBanco] = useState(bd)
+  const [show, setShow] = useState(false)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <body className="flex-col bg-slate-100 min-h-screen">
+      <div className="bg-white flex justify-center items-center">
+        <div className="bg-white w-full h-11 flex justify-between items-center p-6 max-w-6xl">
+          <h1 className="text-3xl font-extrabold">LOGO</h1>
+          <ul>
+            <li className="bg-blue-500 rounded-lg px-2 py-1 text-sm text-white font-extrabold cursor-pointer hover:bg-blue-400"
+            onClick={() => setShow(true)}
+            >Adicionar</li>
+          </ul>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="flex justify-center items-center">
+        <Main
+          data={Banco}
+        />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    {show ? (<Modal show={setShow} data={Banco} setdata={setBanco}/>) : null}
+    </body>
   )
 }
 
