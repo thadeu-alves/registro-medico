@@ -2,7 +2,7 @@ import { PropTypes } from "prop-types"
 import { useState } from "react"
 import { Edit } from "./Edit"
 
-function Player({src, name, age, index}){
+function Player({src, name, age, index, setdata}){
     const [edit, setEdit] = useState(false)
 
     return(
@@ -15,7 +15,7 @@ function Player({src, name, age, index}){
             <h2 className="text-sm">{age} anos</h2>
             </div>
             {edit ? (
-                <Edit index={index} show={edit} setShow={setEdit}/>
+                <Edit index={index} show={edit} setShow={setEdit} setdata={setdata}/>
             ) : null}
         </>
     )
