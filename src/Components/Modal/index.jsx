@@ -1,7 +1,10 @@
+import PropTypes from "prop-types";
 
-function Modal({show, data, setdata}){
+export function Modal({show, data, setdata}){
   let name = ""
   let age = 0
+  let peso = 0
+  let alt = 0
   window.onclick = (e) => {
     if(e.target == document.querySelector(".modal-content")){
       console.log("True")
@@ -10,7 +13,7 @@ function Modal({show, data, setdata}){
   }
 
   const update = () => {
-    data.push({name, age})
+    data.push({name, age, peso, alt})
     setdata(data)
     show(false)
     localStorage.setItem('banco', JSON.stringify(data))
@@ -26,6 +29,12 @@ function Modal({show, data, setdata}){
             <label htmlFor="m-funcao">Idade</label>
             <input className="bg-slate-200 px-3 py-1 rounded-lg" id="m-funcao" type="number" required onChange={e => age = e.currentTarget.value}/>
 
+            <label htmlFor="m-funcao">Altura (cm)</label>
+            <input className="bg-slate-200 px-3 py-1 rounded-lg" id="m-funcao" type="number" required onChange={e => alt = e.currentTarget.value}/>
+
+            <label htmlFor="m-funcao">Peso (Kg)</label>
+            <input className="bg-slate-200 px-3 py-1 rounded-lg" id="m-funcao" type="number" required onChange={e => peso = e.currentTarget.value}/>
+
             <button id="btnSalvar" className="mt-8 bg-green-400 rounded-2xl w-60 m-auto py-2 text-white hover:bg-green-300 flex justify-center items-center" onClick={() => {
               update()
             }}>Salvar</button>
@@ -38,4 +47,8 @@ function Modal({show, data, setdata}){
   )
 }
 
-export {Modal}
+Modal.propTypes = {
+  data: PropTypes.array.isRequired,
+  show: PropTypes.bool.isRequired,
+  setdata: PropTypes.func.isRequired,
+};
