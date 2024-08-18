@@ -10,7 +10,7 @@ function App() {
 
   return (
     <body className="flex-col bg-slate-100 min-h-screen">
-      <div className="bg-white flex justify-center items-center">
+      <div className="bg-white flex justify-center items-center ">
         <Header setShow={setShow}/>
       </div>
       <div className="flex justify-center items-center">
