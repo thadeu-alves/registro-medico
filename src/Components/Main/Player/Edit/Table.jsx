@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export function Table({ setdata, data }) {
-    const [ops, setOps] = useState([{}, {}, {}])
+    const [ops, setOps] = useState([{}, {}])
 
     return (
         <div className="relative overflow-x-auto w-full">
